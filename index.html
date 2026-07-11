@@ -4,83 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
-    <style>
-        *{
-            padding: 0;
-            margin: 0;
-            border: 2px solid red;
-        }
-
-        .container{
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .calculator-body{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            gap: 10px;
-            border-radius: 20px;
-        }
-
-        .row{
-            display: flex;
-            flex-direction: row;
-            gap: 10px;
-        }
-
-        input{
-            width: 98%;
-            height: 55px;
-            border-radius: 10px;
-        }
-
-        button{
-            font-size: 40px;
-            border-radius: 10px;
-            height: 55px;
-            width: 55px;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
     <div class="container">
         <div class="calculator-body">
-            <input type="text">
+            <input></input>
             <div class="row">
-                <button>7</button>
-                <button>8</button>
-                <button>9</button>
-                <button>&divide;</button>
+                <button class="number">7</button>
+                <button class="number">8</button>
+                <button class="number">9</button>
+                <button class="operator">&divide;</button>
             </div>
             <div class="row">
-                <button>4</button>
-                <button>5</button>
-                <button>6</button>
-                <button>x</button>
+                <button class="number">4</button>
+                <button class="number">5</button>
+                <button class="number">6</button>
+                <button class="operator">×</button>
             </div>
             <div class="row">
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>-</button>
+                <button class="number">1</button>
+                <button class="number">2</button>
+                <button class="number">3</button>
+                <button class="operator">-</button>
             </div>
             <div class="row">
-                <button>0</button>
-                <button>.</button>
-                <button>=</button>
-                <button>+</button>
+                <button class="number">0</button>
+                <button class="reset">AC</button>
+                <button class="answer">=</button>
+                <button class="operator">+</button>
             </div>
         </div>
     </div>
 </body>
-</html>
+</html>>

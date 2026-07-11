@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+/* 1. Global Reset */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box; /* Applied globally to ensure padding/borders don't break dimensions */
+}
+
+/* 2. Layout Container */
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(250, 229, 36);
+}
+
+/* 3. Calculator Framework */
+.calculator-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    gap: 15px;
+    border-radius: 30px;
+    background-color: rgb(212, 212, 216);
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+/* 4. Resolved Input Element */
+input {
+    width: 445px; 
+    height: 100px;
+    
+    /* Typography & Text Alignment */
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    font-size: 85px;
+    font-style: normal;
+    color: rgb(24, 34, 28);
+    text-align: right;
+    padding-right: 15px;
+    
+    
+    /* Styling & Borders */
+    background-color: rgb(167, 185, 172);
+    border: 3px solid rgb(120, 120, 125);
+    border-radius: 15px;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* 5. Buttons */
+button {
+    font-size: 70px;
+    font-family: 'Helvetica Neue', Helvetica, 'Arial Black', sans-serif;
+    border-radius: 15px;
+    color: white;
+    height: 100px;
+    width: 100px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    transition: transform 0.2s ease;
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+button:hover {
+    transform: scale(0.95); 
+}
+
+/* 6. Button Color Variants */
+.number {
+    background-color: rgb(44, 44, 46);
+}
+
+.operator {
+    background-color: rgb(228, 110, 48);
+}
+
+.reset {
+    background-color: rgb(202, 60, 60);
+    font-size: 40px;
+}
+
+.answer {
+    background-color: #2563EB;
+}
