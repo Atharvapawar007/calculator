@@ -87,20 +87,20 @@ button:hover {
     background-color: rgb(228, 110, 48);
 }
 
-.reset {
+#reset {
     background-color: rgb(202, 60, 60);
     font-size: 40px;
 }
 
-.answer {
+#answer {
     background-color: #2563EB;
 }
 
-.backspace > img{
+#backspace > img{
     height: 60px;
 }
 
-.backspace{
+#backspace{
     background-color: #5F6368;
 }
 
@@ -110,10 +110,10 @@ button:hover {
     align-items: center;
 }
 
-.logo > img{
+#logo > img{
     height: 53px;
 }
 
-.decimal{
+#decimal{
     background-color:rgb(44, 44, 46);
 }
