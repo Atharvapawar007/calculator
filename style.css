@@ -75,7 +75,7 @@ button {
 }
 
 button:hover {
-    transform: scale(0.95); 
+    transform: scale(0.90); 
 }
 
 /* 6. Button Color Variants */
@@ -85,6 +85,11 @@ button:hover {
 
 .operator {
     background-color: rgb(228, 110, 48);
+}
+
+.selected{
+    transform: scale(0.90); 
+    background-color: rgb(226, 130, 78);
 }
 
 #reset {
