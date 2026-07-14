@@ -15,6 +15,9 @@ let num1 = 0;
 let num2 = undefined;
 let operator = undefined;
 
+//flags
+let hasEnteredOperator = false;
+
 //operations
 //1. number buttons
 numberButtons.forEach(numberButton => {
@@ -29,10 +32,17 @@ numberButtons.forEach(numberButton => {
         if(opt !== null){
             opt.classList.remove("selected");
             input.value = "";
+            hasEnteredOperator = true;
         }
 
         const number = numberButton.innerText;
         input.value += number;
+
+        if(hasEnteredOperator){
+            num2 = input.value;
+        }else{
+            num1 = input.value;
+        }
     })
 })
 
@@ -61,11 +71,18 @@ operatorButtons.forEach(operatorButton => {
 //3. equalTo button
 equalToButton.addEventListener("click", () => {
     input.value = calculateAnswer(num1, num2, operator);
+    num1 = input.value;
+    num2 = undefined;
+    operator = undefined;
+    hasEnteredOperator = false;
 })
 
 //4. backspace button
 backspaceButton.addEventListener("click", () => {
     input.value = input.value.slice(0, -1);
+    if(input.value === ""){
+        input.value = "0";
+    }
 })
 
 //5. dedcimal button
@@ -84,6 +101,7 @@ clearButton.addEventListener("click", () => {
     num1 = 0;
     num2 = undefined;
     operator = undefined;
+    hasEnteredOperator = false;
     
     //if an operator is already selected
     const opt = document.querySelector(".selected");
@@ -99,20 +117,33 @@ function calculateAnswer(number1, number2, operator){
     }else{
         const val1 = Number(number1);
         const val2 = Number(number2);
+        let answer = 0;
 
+        //addition
         if(operator === "+"){
-            return val1 + val2;
-        }else if(operator === "-"){
-            return val1 - val2;
-        }else if(operator === "×"){
-            return val1 * val2;
-        }else{
+            answer = val1 + val2;
+        }
+        //subtraction
+        else if(operator === "-"){
+            answer = val1 - val2;
+        }
+        //multiplication
+        else if(operator === "×"){
+            answer = val1 * val2;
+        }
+        //division
+        else{
             if(num2 == 0){
-                return "ERROR!"
+                return "INFINITY"
             }else{
-                const result = num1 / num2;
-                return result.toFixed(4);
+                answer = val1 / val2;
             }
         }
+
+        answer = answer.toFixed(7);
+        while(answer.includes(".") && (answer.endsWith("0") || answer.endsWith("."))){
+            answer = answer.slice(0, -1);
+        }
+        return answer;
     }
 }
