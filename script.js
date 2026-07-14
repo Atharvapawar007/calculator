@@ -50,6 +50,13 @@ numberButtons.forEach(numberButton => {
 operatorButtons.forEach(operatorButton => {
     operatorButton.addEventListener("click", () => {
 
+        //if already entered the operator and the second number
+        if(hasEnteredOperator && num2 !== undefined){
+            num1 = calculateAnswer(num1, num2, operator);
+            input.value = num1;
+            hasEnteredOperator = false;
+        }
+
         //If the same operator is already selected
         if(operatorButton.classList.contains("selected")){
             operatorButton.classList.remove("selected");
@@ -71,7 +78,7 @@ operatorButtons.forEach(operatorButton => {
 //3. equalTo button
 equalToButton.addEventListener("click", () => {
     input.value = calculateAnswer(num1, num2, operator);
-    num1 = input.value;
+    num1 = (input.value === "ERROR!" || input.value === "INFINITY") ? 0 : input.value;
     num2 = undefined;
     operator = undefined;
     hasEnteredOperator = false;
@@ -82,6 +89,11 @@ backspaceButton.addEventListener("click", () => {
     input.value = input.value.slice(0, -1);
     if(input.value === ""){
         input.value = "0";
+    }
+    if(hasEnteredOperator){
+        num2 = input.value;
+    }else{
+        num1 = input.value;
     }
 })
 
@@ -113,7 +125,7 @@ clearButton.addEventListener("click", () => {
 //operational logic
 function calculateAnswer(number1, number2, operator){
     if(number2 === undefined || operator === undefined){
-        input.value = "ERROR!";
+        return "ERROR!";
     }else{
         const val1 = Number(number1);
         const val2 = Number(number2);
@@ -133,13 +145,14 @@ function calculateAnswer(number1, number2, operator){
         }
         //division
         else{
-            if(num2 == 0){
-                return "INFINITY"
+            if(val2 == 0){
+                return "INFINITY";
             }else{
                 answer = val1 / val2;
             }
         }
 
+        //limit the digits to 7 post decimal point and truncate any ending zeroes
         answer = answer.toFixed(7);
         while(answer.includes(".") && (answer.endsWith("0") || answer.endsWith("."))){
             answer = answer.slice(0, -1);
